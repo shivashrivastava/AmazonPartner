@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>MonkScout</title>
+		<meta content name="descriptison">
+		<meta content name="keywords">
+	
+	<!-- Favicons -->
+		<link href="images/favicon.png" rel="icon">
+		<link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+		<!-- Google Fonts -->
+		<link href="css/css.css" rel="stylesheet">
+		<!-- Vendor CSS Files -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/icofont.min.css" rel="stylesheet">
+		<link href="css/boxicons.min.css" rel="stylesheet">
+		<link href="css/venobox.css" rel="stylesheet">
+		<link href="css/remixicon.css" rel="stylesheet">
+		<link href="css/owl.carousel.min.css" rel="stylesheet">
+		<link href="css/aos.css" rel="stylesheet">
+		<!-- Template Main CSS File -->
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/services-design.css">
+	</head>
+	<body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0"><button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
+		<!-- ======= Header ======= -->
+		<header id="header" class="fixed-top header-scrolled">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html"><img src="images/logo.png" class="img-fluid" alt></a></h1>
+
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+		  <li class="drop-down"><a href="amazon-seller.html">Amazon</a>
+            <ul>
+
+               <li><a href="amazon-seller-registration.html">Amazon Seller Registration</a></li>
+				  <li><a href="amazon-seller-training.html">Amazon Seller Training</a></li>
+				  <li><a href="amazon-catalog.html">Amazon Catalog Services</a></li>
+				  <li><a href="imaging-service.html">Imaging Service</a></li>
+				  <li><a href="amazon-sponsored-ads.html">Amazon Sponsered Ads management</a></li>
+				  <li><a href="enhanced-brand-content.html">Enhanced Brand Content</a></li>
+				  <li><a href="amazon-account-management.html">Amazon Account Management</a></li>
+				  <li><a href="amazon-account-reinstation.html">Amazon Account Reinstation</a></li>
+
+            </ul>
+          </li>
+
+		   <li class="drop-down"><a href>Registration</a>
+            <ul>
+
+               <li><a href="trademark.html">Trademark RegistratIon</a></li>
+				  <li><a href="msme-registration.html">MSME License</a></li>
+				   <li><a href="gst-registration.html">GST Registration</a></li>
+			
+            </ul>
+          </li>
+
+
+		   <li class="drop-down"><a href="vendor-onboarding.html">Vendor Onboarding</a>
+            <ul>
+
+               <li><a href="b2c.html">B2C Marketplaces Registration</a></li>
+				  <li><a href="b2b.html">B2B Marketplaces Registration</a></li>
+
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+
+    </div>
+  </header>		<!-- ======= Hero Section ======= -->
+		<section id="innerBanner">
+			<div class="inner-content">
+				<h2><span>B2B Marketplaces Registration </span></h2><br>
+				<p class="text-white">_</p>
+				<p></p>
+				<div>
+				</div>
+			</div>
+		</section>
+		<section id class="about">
+			<div class="container aos-init aos-animate" data-aos="fade-up">
+				<div class="row">
+					<div class="col-lg-6 video-box align-self-baseline demu aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+						<img src="images/b2b.jpg" class="img-fluid" alt>
+					</div>
+					<div class="col-lg-6 pt-3 pt-lg-0 content">
+						<div class="section-title">
+							<h2>Sell on Amazon</h2>
+							<p>Why Sell On B2B MarketPlaces</p>
+						</div>
+						<p class>
+							B2B is short for business to business. It refers to companies -- or salespeople -- who sell products chiefly to other businesses, rather than selling them to consumers. B2B sales are often more complex than B2C (business to consumer) sales. ... For example, a tire manufacturer might sell tires to a car manufacturer. On the internet, B2B (business-to-business), also known as e-biz, is the exchange of products, services or information (aka e-commerce) between businesses, rather than between businesses and consumers. ... B2B websites like. Udaan,Alibaba etc.
+						</p>
+
+
+				<br>
+				<div class><a href="#contact"><button type="submit">Contact us</button></a></div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+
+ <section id="services">
+			<div class="container">
+				<div class="section-title text-center">
+
+					<p>Documents Required For B2B Marketplaces</p>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+							<div class="icon svgImg">
+								<i class="icofont-pen-alt-2"></i>
+							</div>
+							<h4 class="title pb-2"><a href="#">Gst Registration</a></h4>
+							  <br>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+							<div class="icon svgImg">
+								<i class="icofont-calendar"></i>
+							</div>
+							<h4 class="title pb-2"><a href="#">Minimum 500 Unites OF Per Product</a></h4>
+							 <br>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+							<div class="icon svgImg">
+								<i class="icofont-list"></i>
+							</div>
+							<h4 class="title pb-2"><a href="#">Firm Name, Mobile Number, Email</a></h4>
+							  <br>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+							<div class="icon svgImg">
+								<i class="icofont-bullseye"></i>
+							</div>
+							<h4 class="title pb-2"><a href="#">Adress Proof (ElectricityBill,Msme) Etc</a></h4>
+					  <br>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+							<div class="icon svgImg">
+								<i class="icofont-bullhorn"></i>
+							</div>
+							<h4 class="title pb-2"><a href="#">Bank Accounts</a></h4>
+							 <br>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+				</div>
+
+			</div>
+		</section>
+
+
+   <section id="about-boxes" class="about-boxes">
+			<div class="container aos-init aos-animate" data-aos="fade-up">
+				<div class="section-title text-center">
+					<p>Things Covered</p>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+						<div class="card">
+							<div class="card-icon">
+								<i class="ri-brush-4-line"></i>
+							</div>
+							<div class="card-body text-center">
+								<h5 class="card-title"><a href>Udaan</a></h5>
+								<p>Udaan is a Business to business marketplace on which manufacturers and wholesalers can sell their products to retailers via an online platform or mobile app. And, the company provides logistics, secure payments, and technical support also. They are the asset-light player based on their Business Model</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+						<div class="card">
+							<div class="card-icon">
+								<i class="ri-calendar-check-line"></i>
+							</div>
+							<div class="card-body text-center">
+								<h5 class="card-title"><a href>Alibaba</a></h5>
+								<p>Sell On Alibaba Reach Millions Of B2B Buyers Globally
+Alibaba Cant Take commission On sale alibaba take Fixed Monthly Charges Like Rent  And There Is 3 type Of package Accourding To showcase Products Is This Word Most Profitable B2b Marketplace
+</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+						<div class="card">
+							<div class="card-icon">
+								<i class="ri-movie-2-line"></i>
+							</div>
+							<div class="card-body text-center">
+								<h5 class="card-title"><a href>IndiaMart</a></h5>
+								<p>IndiaMart Is India’s Largest B2b Marketplace IndiaMart can’t Take any type of commission There is Subscription
+Under the subscription package, Indiamart will charge a subscription fee and give the supplier listing on the site, cataloging services and better lead and content management.
+</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+</section>
+<!--Section: Contact v.2-->			</div>
+          </div>
+
+	<!-- ======= Footer ======= -->
+	<!-- End Footer -->
+	<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>MonkScout</h3>
+              <p>
+               MP, India<br><br>
+                <strong>Phone:</strong> +91 91791 66005<br>
+                <strong>Email:</strong> care@monkscout.com<br>
+              </p>
+              <div class="social-links mt-3">
+
+                <a href="https://www.facebook.com/MonkScout" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/monkscout" class="instagram"><i class="bx bxl-instagram"></i></a>
+
+                <a href="https://www.linkedin.com/company/MonkScout" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about-us.html">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="amazon-seller.html">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="amazon-account-management.html">Manage Account</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="amazon-account-reinstation.html">Account Reinstation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="vendor-onboarding.html">Vendor Onboarding</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="gst-registration.html">GST Registration</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Any queries? Please let us know We will be glad to assist, Looking forward to hear from you!</p>
+            <form action method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        © Copyright <strong><span>MonkScout</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+
+        Designed by <a href>MonkScout</a>
+      </div>
+    </div>
+  </footer>
+
+	<!-- Vendor JS Files -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/validate.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/counterup.min.js"></script>
+	<script src="js/venobox.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/isotope.pkgd.min.js"></script>
+	<script src="js/aos.js"></script>
+	<!-- Template Main JS File -->
+	<script src="js/main.js"></script><nav class="mobile-nav d-lg-none">
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+		  <li class="drop-down"><a href="amazon-seller.html">Amazon</a>
+            <ul>
+
+               <li><a href="amazon-seller-registration.html">Amazon Seller Registration</a></li>
+				  <li><a href="amazon-seller-training.html">Amazon Seller Training</a></li>
+				  <li><a href="amazon-catalog.html">Amazon Catalog Services</a></li>
+				  <li><a href="imaging-service.html">Imaging Service</a></li>
+				  <li><a href="amazon-sponsored-ads.html">Amazon Sponsered Ads management</a></li>
+				  <li><a href="enhanced-brand-content.html">Enhanced Brand Content</a></li>
+				  <li><a href="amazon-account-management.html">Amazon Account Management</a></li>
+				  <li><a href="amazon-account-reinstation.html">Amazon Account Reinstation</a></li>
+
+            </ul>
+          </li>
+
+		   <li class="drop-down"><a href>Registration</a>
+            <ul>
+
+               <li><a href="trademark.html">Trademark RegistratIon</a></li>
+				  <li><a href="msme-registration.html">MSME License</a></li>
+				   <li><a href="gst-registration.html">GST Registration</a></li>
+				 
+            </ul>
+          </li>
+
+
+		   <li class="drop-down"><a href="vendor-onboarding.html">Vendor Onboarding</a>
+            <ul>
+
+               <li><a href="b2c.html">B2C Marketplaces Registration</a></li>
+				  <li><a href="b2b.html">B2B Marketplaces Registration</a></li>
+
+
+            </ul>
+          </li>
+
+
+
+          <li><a href="contact-us.html">Contact</a></li>
+
+        </ul>
+      </nav><div class="mobile-nav-overly"></div>
+
+</body></html>
