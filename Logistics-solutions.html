@@ -233,22 +233,32 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 </section>
 <script src="https://smtpjs.com/v3/smtp.js"></script> 
   <script type="text/javascript"> 
-    function sendEmail() { 
-	    var to= document.getElementById("to").value;
-var msg= document.getElementById("msg").value;
-      Email.send({ 
-        Host: "smtp.gmail.com", 
-        Username: "caremonkscout@gmail.com", 
-        Password: "Akshat1#", 
-        To: "caremonkscout@gmail.com", 
-        From: to, 
-        Subject: "Logistic - MonkScout", 
-        Body: msg
-      }) 
-        .then(function (message) { 
+//     function sendEmail() { 
+// 	    var to= document.getElementById("to").value;
+// var msg= document.getElementById("msg").value;
+//       Email.send({ 
+//         Host: "smtp.gmail.com", 
+//         Username: "caremonkscout@gmail.com", 
+//         Password: "Akshat1#", 
+//         To: "caremonkscout@gmail.com", 
+//         From: to, 
+//         Subject: "Logistic - MonkScout", 
+//         Body: msg
+//       }) 
+//         .then(function (message) { 
+//           alert("Mail has been sent successfully") 
+//         }); 
+//     } 
+	  
+	  
+	  emailjs.send("service_vqhn6v4","template_4qgi9yg",{
+from_name: to,
+to_name: "MonkScout Logistic Team",
+message: msg,
+reply_to: "monkscout",
+}.then(function (message) { 
           alert("Mail has been sent successfully") 
-        }); 
-    } 
+        }));
   </script> 
 
   
