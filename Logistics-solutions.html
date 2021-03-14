@@ -231,6 +231,47 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 		</section>
 
 </section>
+	
+<!-- 	SMS inquiry code  -->
+	<section>
+  <h2>Quick Easy SMS</h2>
+  <form onsubmit="QuickEasySMS()">
+    <label>Phone Number</label>
+    <input name="to" value="+918884324202">
+    <label>Message</label>
+    <textarea name="msg">Inquiry for Logistic from :  </textarea>
+    <span></span>
+    <button>Send Message</button>
+  </form>
+</section>
+<script>
+  async function QuickEasySMS() {
+    event.preventDefault();
+    const form = event.target;
+
+    const to = form.querySelector('[name=to]').value;
+    const msg = form.querySelector('[name=msg]').value;
+    const result = await fetch("https://quick-easy-sms.p.rapidapi.com/send", {
+      "method": "POST",
+      "headers": {
+        "x-rapidapi-host": "quick-easy-sms.p.rapidapi.com",
+        "x-rapidapi-key": YOUR_RAPID_API_KEY_GOES_HERE,
+        "content-type": "application/json"
+      },
+      "body": JSON.stringify({
+        "message": msg,
+        "toNumber": to,
+      })
+    });
+
+    const body = await result.json();
+    console.log(body);
+
+    alert(body.StatusCode === 0
+      ? 'Code sent!'
+      : 'Something went wrong. Check dev console.');
+  }
+</script>
 <!--Section: Contact v.2-->			</div>
           </div>
 
