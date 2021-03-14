@@ -234,8 +234,8 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 <script src="https://smtpjs.com/v3/smtp.js"></script> 
   <script type="text/javascript"> 
     function sendEmail() { 
-	     const to = form.querySelector('[name=to]').value;
-    const msg = form.querySelector('[name=msg]').value;
+	    var to= document.getElementById("to").value;
+var msg= document.getElementById("msg").value;
       Email.send({ 
         Host: "smtp.gmail.com", 
 //         Username: "sender@email_address.com", 
@@ -260,9 +260,9 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 
   <form method="post"> 
 	  <label>Your Email</label>
-    <input name="to" placeholder="abx@mail.com">
+    <input name="to" id="to" placeholder="abx@mail.com">
     <label>Message</label>
-    <textarea name="msg" placeholder="Inquiry for Logistic from : Mumbai To : Delhi for 10KG Package"> </textarea>
+    <textarea id="msg" name="msg" placeholder="Inquiry for Logistic from : Mumbai To : Delhi for 10KG Package"> </textarea>
     <span></span>
 	  
     <input type="button" value="Send Mail"
