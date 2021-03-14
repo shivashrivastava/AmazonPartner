@@ -254,9 +254,11 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 //     } 
 	  	    
 	function sendEmail() {   
+		
 		var to= document.getElementById("to").value;
 var msg= document.getElementById("msg").value;
 	  emailjs.send("service_vqhn6v4","template_4qgi9yg",{
+// 		   emailjs.init('user_XUhQYQOHt2WR6kSnqKequ')
 from_name: to,
 to_name: "MonkScout Logistic Team",
 message: msg,
@@ -264,10 +266,62 @@ reply_to: "monkscout",
 }).then(function (message) { 
           alert("Mail has been sent successfully") 
         });
+	
+	  
+	  
+// 	  const btn = document.getElementById('button');
+
+// document.getElementById('form')
+//  .addEventListener('submit', function(event) {
+//    event.preventDefault();
+
+//    btn.value = 'Sending...';
+
+//    const serviceID = 'service_vqhn6v4';
+//    const templateID = 'template_4qgi9yg';
+
+//    emailjs.sendForm(serviceID, templateID, this)
+//     .then(() => {
+//       btn.value = 'Send Email';
+//       alert('Sent!');
+//     }, (err) => {
+//       btn.value = 'Send Email';
+//       alert(JSON.stringify(err));
+//     });
+// });
+		
 	}
   </script> 
 
-  
+<!--   <form id="form">
+  <div class="field">
+    <label for="from_name">Name:</label>
+    <input type="text" name="from_name" id="from_name">
+  </div>
+  <div class="field">
+    <label for="to_name" >to_name</label>
+    <input type="text" name="to_name" id="to_name" value="MonkScout" visiblity=>
+  </div>
+  <div class="field">
+    <label for="message">message</label>
+    <input type="text" name="message" id="message">
+  </div>
+  <div class="field">
+    <label for="reply_to">reply_to</label>
+    <input type="text" name="reply_to" id="reply_to">
+  </div>
+
+  <input type="submit" id="button" value="Send Email" >
+</form>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+ -->
+<script type="text/javascript">
+  emailjs.init('user_XUhQYQOHt2WR6kSnqKequ')
+</script>
+	
+	
 
   <form method="post"> 
 	  <label>Your Email</label>
