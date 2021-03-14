@@ -232,26 +232,11 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 		</section>
 
 </section>
-<!-- <script src="https://smtpjs.com/v3/smtp.js"></script>  -->
+
 	<script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script> 
   <script type="text/javascript"> 
-//     function sendEmail() { 
-// 	    var to= document.getElementById("to").value;
-// var msg= document.getElementById("msg").value;
-//       Email.send({ 
-//         Host: "smtp.gmail.com", 
-//         Username: "caremonkscout@gmail.com", 
-//         Password: "Akshat1#", 
-//         To: "caremonkscout@gmail.com", 
-//         From: to, 
-//         Subject: "Logistic - MonkScout", 
-//         Body: msg
-//       }) 
-//         .then(function (message) { 
-//           alert("Mail has been sent successfully") 
-//         }); 
-//     } 
+
 	  	    
 	function sendEmail() {   
 		
@@ -267,56 +252,11 @@ reply_to: "monkscout",
           alert("Mail has been sent successfully") 
         });
 	
-	  
-	  
-// 	  const btn = document.getElementById('button');
-
-// document.getElementById('form')
-//  .addEventListener('submit', function(event) {
-//    event.preventDefault();
-
-//    btn.value = 'Sending...';
-
-//    const serviceID = 'service_vqhn6v4';
-//    const templateID = 'template_4qgi9yg';
-
-//    emailjs.sendForm(serviceID, templateID, this)
-//     .then(() => {
-//       btn.value = 'Send Email';
-//       alert('Sent!');
-//     }, (err) => {
-//       btn.value = 'Send Email';
-//       alert(JSON.stringify(err));
-//     });
-// });
 		
 	}
   </script> 
 
-<!--   <form id="form">
-  <div class="field">
-    <label for="from_name">Name:</label>
-    <input type="text" name="from_name" id="from_name">
-  </div>
-  <div class="field">
-    <label for="to_name" >to_name</label>
-    <input type="text" name="to_name" id="to_name" value="MonkScout" visiblity=>
-  </div>
-  <div class="field">
-    <label for="message">message</label>
-    <input type="text" name="message" id="message">
-  </div>
-  <div class="field">
-    <label for="reply_to">reply_to</label>
-    <input type="text" name="reply_to" id="reply_to">
-  </div>
 
-  <input type="submit" id="button" value="Send Email" >
-</form>
-
-<script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
- -->
 <script type="text/javascript">
   emailjs.init('user_XUhQYQOHt2WR6kSnqKequ')
 </script>
@@ -324,10 +264,40 @@ reply_to: "monkscout",
 	
 
   <form method="post"> 
-	  <label>Your Email</label>
-    <input name="to" id="to" placeholder="abx@mail.com">
-    <label>Message</label>
-    <textarea id="msg" name="msg" placeholder="Inquiry for Logistic from : Mumbai To : Delhi for 10KG Package"></textarea>
+	  <label    display: block;
+  padding: 6px 30px;
+  font-size: 14px;
+  background-color: #4460AA;
+  color: #fff;
+  border: none;
+  height:10px;
+	   width:10px; margin-bottom: 10px;>Your Email</label>
+    <input name="to" id="to" placeholder="abx@mail.com"  display: block;
+  padding: 6px 30px;
+  font-size: 14px;
+  background-color: #4460AA;
+  color: #fff;
+  border: none;
+  height:10px;
+	   width:10px;>
+    <label display: block;
+  padding: 6px 30px;
+  font-size: 14px;
+  background-color: #4460AA;
+  color: #fff;
+  border: none;
+  height:10px;
+	   width:10px;
+	   margin-bottom: 10px;>Message</label>
+    <textarea id="msg" name="msg" placeholder="Inquiry for Logistic from : Mumbai To : Delhi for 10KG Package" display: block;
+  padding: 6px 30px;
+  font-size: 14px;
+  background-color: #4460AA;
+  color: #fff;
+  border: none;
+  height:10px;
+	   width:10px;
+	   margin-bottom: 10px;></textarea>
     <span></span>
 	  
     <input type="button" value="Send Mail"
