@@ -252,12 +252,12 @@ MonkScout is committed to providing responsive, cost effective, efficient and r
 //           alert("Mail has been sent successfully") 
 //         }); 
 //     } 
-	  
+	  	    
 	  
 	  emailjs.send("service_vqhn6v4","template_4qgi9yg",{
-from_name: to,
+from_name: document.getElementById("to").value,
 to_name: "MonkScout Logistic Team",
-message: msg,
+message: document.getElementById("msg").value,
 reply_to: "monkscout",
 }.then(function (message) { 
           alert("Mail has been sent successfully") 
