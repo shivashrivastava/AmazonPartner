@@ -173,90 +173,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Form</title>
+    <title>Form Submission</title>
 </head>
 <body>
 
-    <form id="emailForm">
-        <label for="recipient">Recipient Email:</label>
-        <input type="email" id="recipient" required>
+    <form action="process_form.php" method="post">
+        <!-- Your form fields here -->
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
 
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
 
-        <label for="message">Message:</label>
-        <textarea id="message" required></textarea>
+        <!-- Add more fields as needed -->
 
-        <button type="button" onclick="sendEmail()">Send Email</button>
+        <button type="submit">Submit</button>
     </form>
-
-    <script>
-        function sendEmail() {
-            var recipient = document.getElementById("recipient").value;
-            var subject = document.getElementById("subject").value;
-            var message = document.getElementById("message").value;
-
-            var data = {
-                recipient: recipient,
-                subject: subject,
-                message: message
-            };
-
-            // Make an AJAX request to the server-side script
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "send_email.php", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert("Email sent successfully!");
-                } else if (xhr.readyState == 4) {
-                    alert("Failed to send email. Please try again.");
-                }
-            };
-            xhr.send(JSON.stringify(data));
-        }
-    </script>
 
 </body>
 </html>
+
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $data = json_decode(file_get_contents("php://input"));
+    // Collect form data
+    $firstName = $_POST["firstName"];
+    $lastName = $_POST["lastName"];
+    // Add more variables for other form fields
 
-    $recipient = $data->recipient;
-    $subject = $data->subject;
-    $message = $data->message;
+    // Store the data (you can save it to a database or a file)
+    $data = "First Name: $firstName\nLast Name: $lastName\n";
 
-    // Use a library like PHPMailer to send the email
-    require 'PHPMailer/PHPMailerAutoload.php';
+    // Save to a file (you might want to store it in a database)
+    $filename = "form_data.txt";
+    file_put_contents($filename, $data, FILE_APPEND | LOCK_EX);
 
-    $mail = new PHPMailer;
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-    $mail->Username = admmonkscout@gmail.com; //
-    $mail->Password = Stranger#2024; //
-
-    $mail->setFrom('your_gmail@gmail.com', Monk Scout);
-    $mail->addAddress($recipient);
-
-    $mail->Subject = $subject;
-    $mail->Body = $message;
-
-    if ($mail->send()) {
-        http_response_code(200);
-    } else {
-        http_response_code(500);
-    }
-} else {
-    http_response_code(405); // Method Not Allowed
+    // Redirect to a thank-you page or wherever you want
+    header("Location: thank_you.html");
+    exit();
 }
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+</head>
+<body>
 
+    <h1>Thank you for submitting the form!</h1>
+
+</body>
+</html>
 
 
 
