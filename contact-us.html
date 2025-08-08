@@ -200,35 +200,26 @@
             </ul>
           </div>
 <style>
-  /* Newsletter container */
   .footer-newsletter {
     max-width: 400px;
   }
-
-  /* Headline */
   .footer-newsletter h4 {
     color: #fff;
     font-size: 18px;
     margin-bottom: 10px;
   }
-
-  /* Description text */
   .footer-newsletter p {
     color: #ccc;
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 12px;
   }
-
-  /* Form container */
   .newsletter-form {
     display: flex;
     gap: 5px;
     align-items: center;
     flex-wrap: wrap;
   }
-
-  /* Email input */
   .newsletter-form input[type="email"] {
     flex: 1;
     padding: 10px;
@@ -239,8 +230,6 @@
     color: #000;
     min-width: 200px;
   }
-
-  /* Subscribe button */
   .newsletter-form input[type="submit"] {
     background: #e74c3c;
     color: #fff;
@@ -251,13 +240,20 @@
     font-size: 14px;
     white-space: nowrap;
   }
-
-  /* Hover effect */
   .newsletter-form input[type="submit"]:hover {
     background: #cf3f2f;
   }
-
-  /* Mobile adjustments */
+  .newsletter-message {
+    margin-top: 10px;
+    font-size: 13px;
+    display: none;
+  }
+  .newsletter-message.success {
+    color: #4caf50;
+  }
+  .newsletter-message.error {
+    color: #ff5252;
+  }
   @media (max-width: 600px) {
     .newsletter-form {
       flex-direction: column;
@@ -274,10 +270,47 @@
   <h4>Our Newsletter</h4>
   <p>Any queries? Please let us know. We will be glad to assist. Looking forward to hear from you!</p>
 
-  <form class="newsletter-form" action="https://gmail.us22.list-manage.com/subscribe/post?u=4e63b2b96f1049b519cb7368a&amp;id=6eee43fbe4&amp;f_id=00e5c2e1f0" 
-        method="post" target="_blank" novalidate>
+  <form id="newsletter-form" class="newsletter-form" novalidate>
     <input type="email" name="EMAIL" placeholder="Enter your email" required>
-    <input type="submit" value="Subscribe" name="subscribe">
+    <input type="submit" value="Subscribe">
+  </form>
+  <div id="newsletter-message" class="newsletter-message"></div>
+</div>
+
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  let email = this.EMAIL.value;
+  let messageBox = document.getElementById('newsletter-message');
+
+  if (!email) {
+    messageBox.textContent = "Please enter a valid email address.";
+    messageBox.className = "newsletter-message error";
+    messageBox.style.display = "block";
+    return;
+  }
+
+  fetch('https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new URLSearchParams({ EMAIL: email })
+  })
+  .then(() => {
+    messageBox.textContent = "Thank you for subscribing!";
+    messageBox.className = "newsletter-message success";
+    messageBox.style.display = "block";
+    document.getElementById('newsletter-form').reset();
+  })
+  .catch(() => {
+    messageBox.textContent = "Something went wrong. Please try again.";
+    messageBox.className = "newsletter-message error";
+    messageBox.style.display = "block";
+  });
+});
+</script>
+
+
   </form>
 </div>
 
