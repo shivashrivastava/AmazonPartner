@@ -226,49 +226,88 @@
             </div>
         </div>
     </div>
-</form>
-</div>
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+<style>
+  /* Newsletter container */
+  .footer-newsletter {
+    max-width: 400px;
+  }
 
-		
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Any queries? Please let us know We will be glad to assist, Looking forward to hear from you!</p>
-<div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-        #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 400px;}
-        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+  /* Headline */
+  .footer-newsletter h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Description text */
+  .footer-newsletter p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* Form container */
+  .newsletter-form {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* Email input */
+  .newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    min-width: 200px;
+  }
+
+  /* Subscribe button */
+  .newsletter-form input[type="submit"] {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* Hover effect */
+  .newsletter-form input[type="submit"]:hover {
+    background: #cf3f2f;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .newsletter-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .newsletter-form input[type="email"],
+    .newsletter-form input[type="submit"] {
+      width: 100%;
+    }
+  }
 </style>
-<div id="mc_embed_signup">
-    <form action="https://gmail.us22.list-manage.com/subscribe/post?u=4e63b2b96f1049b519cb7368a&amp;id=6eee43fbe4&amp;f_id=00e5c2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll"><h2></h2>
-            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
-        <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-        <input type="text" name="b_4e63b2b96f1049b519cb7368a_6eee43fbe4" tabindex="-1" value="">
-    </div>
-        <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                <p style="margin: 0px auto;"><a href="http://eepurl.com/jkhNeI" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 160px; height: 30px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-            </div>
-        </div>
-    </div>
-</form>
-</div>
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
-          </div>
 
-        </div>
-      </div>
-    </div>
+<div class="col-lg-4 col-md-6 footer-newsletter">
+  <h4>Our Newsletter</h4>
+  <p>Any queries? Please let us know. We will be glad to assist. Looking forward to hear from you!</p>
+
+  <form class="newsletter-form" action="https://gmail.us22.list-manage.com/subscribe/post?u=4e63b2b96f1049b519cb7368a&amp;id=6eee43fbe4&amp;f_id=00e5c2e1f0" 
+        method="post" target="_blank" novalidate>
+    <input type="email" name="EMAIL" placeholder="Enter your email" required>
+    <input type="submit" value="Subscribe" name="subscribe">
+  </form>
+</div>
+
 
     <div class="container">
       <div class="copyright">
