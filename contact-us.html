@@ -219,16 +219,18 @@
     gap: 5px;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
   }
   .newsletter-form input[type="email"] {
-    flex: 1;
+    flex: 1 1 auto;
     padding: 10px;
     border: none;
     border-radius: 4px;
     font-size: 14px;
     background: #fff;
     color: #000;
-    min-width: 200px;
+    min-width: 0; /* Fix for mobile view */
+    box-sizing: border-box;
   }
   .newsletter-form input[type="submit"] {
     background: #e74c3c;
@@ -244,8 +246,9 @@
     background: #cf3f2f;
   }
   .newsletter-message {
-    margin-top: 10px;
+    width: 100%;
     font-size: 13px;
+    margin-top: 6px;
     display: none;
   }
   .newsletter-message.success {
@@ -273,15 +276,15 @@
   <form id="newsletter-form" class="newsletter-form" novalidate>
     <input type="email" name="EMAIL" placeholder="Enter your email" required>
     <input type="submit" value="Subscribe">
+    <div id="newsletter-message" class="newsletter-message"></div>
   </form>
-  <div id="newsletter-message" class="newsletter-message"></div>
 </div>
 
 <script>
 document.getElementById('newsletter-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  let email = this.EMAIL.value;
+  let email = this.EMAIL.value.trim();
   let messageBox = document.getElementById('newsletter-message');
 
   if (!email) {
@@ -291,21 +294,29 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
     return;
   }
 
-  fetch('https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: new URLSearchParams({ EMAIL: email })
-  })
-  .then(() => {
-    messageBox.textContent = "Thank you for subscribing!";
-    messageBox.className = "newsletter-message success";
-    messageBox.style.display = "block";
-    document.getElementById('newsletter-form').reset();
-  })
-  .catch(() => {
-    messageBox.textContent = "Something went wrong. Please try again.";
-    messageBox.className = "newsletter-message error";
-    messageBox.style.display = "block";
+  let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+
+  $.ajax({
+    url: url,
+    data: { EMAIL: email },
+    dataType: 'jsonp',
+    success: function(data) {
+      if (data.result === "success") {
+        messageBox.textContent = "Thank you for subscribing!";
+        messageBox.className = "newsletter-message success";
+        messageBox.style.display = "block";
+        document.getElementById('newsletter-form').reset();
+      } else {
+        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+        messageBox.className = "newsletter-message error";
+        messageBox.style.display = "block";
+      }
+    },
+    error: function() {
+      messageBox.textContent = "Unable to connect. Please try again.";
+      messageBox.className = "newsletter-message error";
+      messageBox.style.display = "block";
+    }
   });
 });
 </script>
