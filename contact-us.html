@@ -200,38 +200,54 @@
             </ul>
           </div>
 <style>
-  /* Newsletter: mobile-safe + override any theme conflicts */
-  .footer-newsletter { max-width: 480px; }
-  .footer-newsletter h4 { color:#fff; font-size:18px; margin-bottom:10px; }
-  .footer-newsletter p { color:#ccc; font-size:14px; line-height:1.6; margin-bottom:12px; }
-
-  /* Grid prevents input collapsing on small screens */
-  .newsletter-form {
-    display: grid !important;
-    grid-template-columns: 1fr auto;
-    gap: 8px;
-    align-items: center;
+  /* Newsletter Container */
+  .footer-newsletter {
+    max-width: 480px;
+  }
+  .footer-newsletter h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-newsletter p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
   }
 
-  /* FORCE the email field to be visible and full-width */
-  .newsletter-form input[type="email"]{
+  /* Responsive layout using flex */
+  .newsletter-form {
+    display: flex !important;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* Email Input – force visible on mobile */
+  .newsletter-form input[type="email"] {
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
+    flex: 1 1 auto !important;
     padding: 10px !important;
     border-radius: 4px !important;
     border: none !important;
     background: #fff !important;
     color: #000 !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
   }
-  .newsletter-form input[type="email"]::placeholder{ color:#666; }
+  .newsletter-form input[type="email"]::placeholder {
+    color: #666;
+  }
 
-  .newsletter-form input[type="submit"]{
-    display: inline-block !important;
+  /* Subscribe Button */
+  .newsletter-form input[type="submit"] {
     background: #e74c3c !important;
-    color:#fff !important;
+    color: #fff !important;
     border: none !important;
     padding: 10px 20px !important;
     border-radius: 4px !important;
@@ -239,16 +255,33 @@
     white-space: nowrap !important;
     font-size: 14px !important;
   }
-  .newsletter-form input[type="submit"]:hover{ background:#cf3f2f !important; }
+  .newsletter-form input[type="submit"]:hover {
+    background: #cf3f2f !important;
+  }
 
-  .newsletter-message{ width:100%; font-size:13px; margin-top:6px; display:none; }
-  .newsletter-message.success{ color:#4caf50; }
-  .newsletter-message.error{ color:#ff5252; }
+  /* Message Styling */
+  .newsletter-message {
+    width: 100%;
+    font-size: 13px;
+    margin-top: 6px;
+    display: none;
+  }
+  .newsletter-message.success {
+    color: #4caf50;
+  }
+  .newsletter-message.error {
+    color: #ff5252;
+  }
 
-  /* Stack on very small screens */
-  @media (max-width: 600px){
-    .newsletter-form{ grid-template-columns: 1fr; }
-    .newsletter-form input[type="submit"]{ width:100%; }
+  /* Stack inputs on small screens */
+  @media (max-width: 600px) {
+    .newsletter-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .newsletter-form input[type="submit"] {
+      width: 100%;
+    }
   }
 </style>
 
@@ -264,50 +297,49 @@
 </div>
 
 <script>
-  // Inline success without redirect (Mailchimp JSONP)
-  (function(){
-    var form = document.getElementById('newsletter-form');
-    var messageBox = document.getElementById('newsletter-message');
+(function(){
+  var form = document.getElementById('newsletter-form');
+  var messageBox = document.getElementById('newsletter-message');
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
 
-      var email = form.EMAIL.value.trim();
-      if(!email){
-        messageBox.textContent = "Please enter a valid email address.";
-        messageBox.className = "newsletter-message error";
-        messageBox.style.display = "block";
-        return;
-      }
+    var email = form.EMAIL.value.trim();
+    if(!email){
+      messageBox.textContent = "Please enter a valid email address.";
+      messageBox.className = "newsletter-message error";
+      messageBox.style.display = "block";
+      return;
+    }
 
-      var url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+    var url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
 
-      // Requires jQuery (already included on your page)
-      $.ajax({
-        url: url,
-        data: { EMAIL: email },
-        dataType: 'jsonp',
-        success: function(data){
-          if (data.result === "success") {
-            messageBox.textContent = "Thank you for subscribing!";
-            messageBox.className = "newsletter-message success";
-            messageBox.style.display = "block";
-            form.reset();
-          } else {
-            messageBox.textContent = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g,'');
-            messageBox.className = "newsletter-message error";
-            messageBox.style.display = "block";
-          }
-        },
-        error: function(){
-          messageBox.textContent = "Unable to connect. Please try again.";
+    $.ajax({
+      url: url,
+      data: { EMAIL: email },
+      dataType: 'jsonp',
+      success: function(data){
+        if (data.result === "success") {
+          messageBox.textContent = "Thank you for subscribing!";
+          messageBox.className = "newsletter-message success";
+          messageBox.style.display = "block";
+          form.reset();
+        } else {
+          messageBox.textContent = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g,'');
           messageBox.className = "newsletter-message error";
           messageBox.style.display = "block";
         }
-      });
+      },
+      error: function(){
+        messageBox.textContent = "Unable to connect. Please try again.";
+        messageBox.className = "newsletter-message error";
+        messageBox.style.display = "block";
+      }
     });
-  })();
+  });
+})();
 </script>
+
 
 
   </form>
