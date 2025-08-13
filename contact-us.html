@@ -200,72 +200,55 @@
             </ul>
           </div>
 <style>
-  .footer-newsletter {
-    max-width: 400px;
-  }
-  .footer-newsletter h4 {
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  .footer-newsletter p {
-    color: #ccc;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-  }
+  /* Newsletter: mobile-safe + override any theme conflicts */
+  .footer-newsletter { max-width: 480px; }
+  .footer-newsletter h4 { color:#fff; font-size:18px; margin-bottom:10px; }
+  .footer-newsletter p { color:#ccc; font-size:14px; line-height:1.6; margin-bottom:12px; }
+
+  /* Grid prevents input collapsing on small screens */
   .newsletter-form {
-    display: flex;
-    gap: 5px;
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
     align-items: center;
-    flex-wrap: wrap;
-    position: relative;
   }
-  .newsletter-form input[type="email"] {
-    flex: 1 1 auto;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    background: #fff;
-    color: #000;
-    min-width: 0; /* Fix for mobile view */
-    box-sizing: border-box;
+
+  /* FORCE the email field to be visible and full-width */
+  .newsletter-form input[type="email"]{
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px !important;
+    border-radius: 4px !important;
+    border: none !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-sizing: border-box !important;
   }
-  .newsletter-form input[type="submit"] {
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    white-space: nowrap;
+  .newsletter-form input[type="email"]::placeholder{ color:#666; }
+
+  .newsletter-form input[type="submit"]{
+    display: inline-block !important;
+    background: #e74c3c !important;
+    color:#fff !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    font-size: 14px !important;
   }
-  .newsletter-form input[type="submit"]:hover {
-    background: #cf3f2f;
-  }
-  .newsletter-message {
-    width: 100%;
-    font-size: 13px;
-    margin-top: 6px;
-    display: none;
-  }
-  .newsletter-message.success {
-    color: #4caf50;
-  }
-  .newsletter-message.error {
-    color: #ff5252;
-  }
-  @media (max-width: 600px) {
-    .newsletter-form {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .newsletter-form input[type="email"],
-    .newsletter-form input[type="submit"] {
-      width: 100%;
-    }
+  .newsletter-form input[type="submit"]:hover{ background:#cf3f2f !important; }
+
+  .newsletter-message{ width:100%; font-size:13px; margin-top:6px; display:none; }
+  .newsletter-message.success{ color:#4caf50; }
+  .newsletter-message.error{ color:#ff5252; }
+
+  /* Stack on very small screens */
+  @media (max-width: 600px){
+    .newsletter-form{ grid-template-columns: 1fr; }
+    .newsletter-form input[type="submit"]{ width:100%; }
   }
 </style>
 
@@ -281,44 +264,49 @@
 </div>
 
 <script>
-document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Inline success without redirect (Mailchimp JSONP)
+  (function(){
+    var form = document.getElementById('newsletter-form');
+    var messageBox = document.getElementById('newsletter-message');
 
-  let email = this.EMAIL.value.trim();
-  let messageBox = document.getElementById('newsletter-message');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
 
-  if (!email) {
-    messageBox.textContent = "Please enter a valid email address.";
-    messageBox.className = "newsletter-message error";
-    messageBox.style.display = "block";
-    return;
-  }
-
-  let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
-
-  $.ajax({
-    url: url,
-    data: { EMAIL: email },
-    dataType: 'jsonp',
-    success: function(data) {
-      if (data.result === "success") {
-        messageBox.textContent = "Thank you for subscribing!";
-        messageBox.className = "newsletter-message success";
-        messageBox.style.display = "block";
-        document.getElementById('newsletter-form').reset();
-      } else {
-        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+      var email = form.EMAIL.value.trim();
+      if(!email){
+        messageBox.textContent = "Please enter a valid email address.";
         messageBox.className = "newsletter-message error";
         messageBox.style.display = "block";
+        return;
       }
-    },
-    error: function() {
-      messageBox.textContent = "Unable to connect. Please try again.";
-      messageBox.className = "newsletter-message error";
-      messageBox.style.display = "block";
-    }
-  });
-});
+
+      var url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+
+      // Requires jQuery (already included on your page)
+      $.ajax({
+        url: url,
+        data: { EMAIL: email },
+        dataType: 'jsonp',
+        success: function(data){
+          if (data.result === "success") {
+            messageBox.textContent = "Thank you for subscribing!";
+            messageBox.className = "newsletter-message success";
+            messageBox.style.display = "block";
+            form.reset();
+          } else {
+            messageBox.textContent = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g,'');
+            messageBox.className = "newsletter-message error";
+            messageBox.style.display = "block";
+          }
+        },
+        error: function(){
+          messageBox.textContent = "Unable to connect. Please try again.";
+          messageBox.className = "newsletter-message error";
+          messageBox.style.display = "block";
+        }
+      });
+    });
+  })();
 </script>
 
 
