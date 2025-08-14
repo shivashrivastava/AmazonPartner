@@ -375,7 +375,7 @@ $('#contact-form').on('submit', function(e){
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-           <style>
+<style>
   .footer-newsletter {
     max-width: 400px;
   }
@@ -391,40 +391,34 @@ $('#contact-form').on('submit', function(e){
     margin-bottom: 12px;
   }
   .newsletter-form {
-    display: flex !important;
+    display: flex;
     gap: 5px;
     align-items: center;
     flex-wrap: wrap;
     position: relative;
   }
-  /* Force the email input to always show */
   .newsletter-form input[type="email"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    flex: 1 1 auto !important;
-    padding: 10px !important;
-    border: none !important;
-    border-radius: 4px !important;
-    font-size: 14px !important;
-    background: #fff !important;
-    color: #000 !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    min-width: 200px;
   }
   .newsletter-form input[type="submit"] {
-    background: #e74c3c !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    font-size: 14px !important;
-    white-space: nowrap !important;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
   }
   .newsletter-form input[type="submit"]:hover {
-    background: #cf3f2f !important;
+    background: #cf3f2f;
   }
   .newsletter-message {
     width: 100%;
@@ -438,13 +432,25 @@ $('#contact-form').on('submit', function(e){
   .newsletter-message.error {
     color: #ff5252;
   }
-  /* Stack neatly on mobile */
-  @media (max-width: 600px) {
+
+  /* Mobile override fix */
+  @media (max-width: 768px) {
     .newsletter-form {
+      display: flex !important;
       flex-direction: column !important;
       align-items: stretch !important;
+      gap: 8px !important;
     }
-    .newsletter-form input[type="email"],
+    .newsletter-form input[type="email"] {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
     .newsletter-form input[type="submit"] {
       width: 100% !important;
     }
@@ -478,6 +484,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
 
   let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
 
+  // JSONP request to Mailchimp
   $.ajax({
     url: url,
     data: { EMAIL: email },
@@ -502,6 +509,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
   });
 });
 </script>
+
 
             </form>
 
