@@ -375,9 +375,9 @@ $('#contact-form').on('submit', function(e){
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
- <style>
+<style>
   .footer-newsletter {
-    max-width: 400px;
+    max-width: 100%;
   }
   .footer-newsletter h4 {
     color: #fff;
@@ -390,12 +390,14 @@ $('#contact-form').on('submit', function(e){
     line-height: 1.6;
     margin-bottom: 12px;
   }
+
+  /* Newsletter layout */
   .newsletter-form {
     display: flex;
     gap: 5px;
     align-items: center;
     flex-wrap: wrap;
-    position: relative;
+    width: 100%;
   }
   .newsletter-form input[type="email"] {
     flex: 1;
@@ -405,7 +407,7 @@ $('#contact-form').on('submit', function(e){
     font-size: 14px;
     background: #fff;
     color: #000;
-    min-width: 200px;
+    min-width: 0;
   }
   .newsletter-form input[type="submit"] {
     background: #e74c3c;
@@ -420,6 +422,8 @@ $('#contact-form').on('submit', function(e){
   .newsletter-form input[type="submit"]:hover {
     background: #cf3f2f;
   }
+
+  /* Success/Error message */
   .newsletter-message {
     width: 100%;
     font-size: 13px;
@@ -433,31 +437,15 @@ $('#contact-form').on('submit', function(e){
     color: #ff5252;
   }
 
-  /* SUPER OVERRIDE for mobile */
-  @media (max-width: 768px) {
+  /* Mobile stack */
+  @media (max-width: 600px) {
     .newsletter-form {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: stretch !important;
-      gap: 8px !important;
+      flex-direction: column;
+      align-items: stretch;
     }
-    .newsletter-form input[type="email"] {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      position: relative !important;
-      width: 100% !important;
-      min-width: 0 !important;
-      max-width: 100% !important;
-      box-sizing: border-box !important;
-      height: auto !important;
-      padding: 10px !important;
-      border-radius: 4px !important;
-      background: #fff !important;
-      color: #000 !important;
-    }
+    .newsletter-form input[type="email"],
     .newsletter-form input[type="submit"] {
-      width: 100% !important;
+      width: 100%;
     }
   }
 </style>
@@ -500,7 +488,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
         messageBox.style.display = "block";
         document.getElementById('newsletter-form').reset();
       } else {
-        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+        messageBox.textContent = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g,'');
         messageBox.className = "newsletter-message error";
         messageBox.style.display = "block";
       }
@@ -513,6 +501,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
   });
 });
 </script>
+
 
           </div>
 
