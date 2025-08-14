@@ -375,7 +375,7 @@ $('#contact-form').on('submit', function(e){
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-<style>
+ <style>
   .footer-newsletter {
     max-width: 400px;
   }
@@ -433,7 +433,7 @@ $('#contact-form').on('submit', function(e){
     color: #ff5252;
   }
 
-  /* Mobile override fix */
+  /* SUPER OVERRIDE for mobile */
   @media (max-width: 768px) {
     .newsletter-form {
       display: flex !important;
@@ -450,6 +450,11 @@ $('#contact-form').on('submit', function(e){
       min-width: 0 !important;
       max-width: 100% !important;
       box-sizing: border-box !important;
+      height: auto !important;
+      padding: 10px !important;
+      border-radius: 4px !important;
+      background: #fff !important;
+      color: #000 !important;
     }
     .newsletter-form input[type="submit"] {
       width: 100% !important;
@@ -484,7 +489,6 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
 
   let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
 
-  // JSONP request to Mailchimp
   $.ajax({
     url: url,
     data: { EMAIL: email },
@@ -509,9 +513,6 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
   });
 });
 </script>
-
-
-            </form>
 
           </div>
 
