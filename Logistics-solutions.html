@@ -374,11 +374,10 @@ $('#contact-form').on('submit', function(e){
             </ul>
           </div>
 
-<!-- Newsletter Section -->
+ <div class="col-lg-4 col-md-6 footer-newsletter">
 <style>
   .footer-newsletter {
-    max-width: 480px;
-    margin: 0 auto;
+    max-width: 100%;
   }
   .footer-newsletter h4 {
     color: #fff;
@@ -391,20 +390,23 @@ $('#contact-form').on('submit', function(e){
     line-height: 1.6;
     margin-bottom: 12px;
   }
+
+  /* Newsletter layout */
   .newsletter-form {
     display: flex;
-    gap: 8px;
+    gap: 5px;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
   }
   .newsletter-form input[type="email"] {
     flex: 1;
     padding: 10px;
-    border-radius: 4px;
     border: none;
+    border-radius: 4px;
+    font-size: 14px;
     background: #fff;
     color: #000;
-    font-size: 14px;
     min-width: 0;
   }
   .newsletter-form input[type="submit"] {
@@ -420,6 +422,8 @@ $('#contact-form').on('submit', function(e){
   .newsletter-form input[type="submit"]:hover {
     background: #cf3f2f;
   }
+
+  /* Success/Error message */
   .newsletter-message {
     width: 100%;
     font-size: 13px;
@@ -432,6 +436,8 @@ $('#contact-form').on('submit', function(e){
   .newsletter-message.error {
     color: #ff5252;
   }
+
+  /* Mobile stack */
   @media (max-width: 600px) {
     .newsletter-form {
       flex-direction: column;
@@ -444,9 +450,10 @@ $('#contact-form').on('submit', function(e){
   }
 </style>
 
-<div class="footer-newsletter">
+<div class="col-lg-4 col-md-6 footer-newsletter">
   <h4>Our Newsletter</h4>
   <p>Any queries? Please let us know. We will be glad to assist. Looking forward to hear from you!</p>
+
   <form id="newsletter-form" class="newsletter-form" novalidate>
     <input type="email" name="EMAIL" placeholder="Enter your email" required>
     <input type="submit" value="Subscribe">
@@ -457,15 +464,19 @@ $('#contact-form').on('submit', function(e){
 <script>
 document.getElementById('newsletter-form').addEventListener('submit', function(e) {
   e.preventDefault();
+
   let email = this.EMAIL.value.trim();
   let messageBox = document.getElementById('newsletter-message');
+
   if (!email) {
     messageBox.textContent = "Please enter a valid email address.";
     messageBox.className = "newsletter-message error";
     messageBox.style.display = "block";
     return;
   }
+
   let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+
   $.ajax({
     url: url,
     data: { EMAIL: email },
@@ -477,7 +488,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
         messageBox.style.display = "block";
         document.getElementById('newsletter-form').reset();
       } else {
-        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+        messageBox.textContent = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g,'');
         messageBox.className = "newsletter-message error";
         messageBox.style.display = "block";
       }
@@ -490,6 +501,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
   });
 });
 </script>
+
 
           </div>
 
