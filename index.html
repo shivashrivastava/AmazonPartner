@@ -329,6 +329,103 @@
 				</div>
 								</section>
 								</main><!-- End #main -->
+
+
+	<section id="services">
+  <div class="container">
+    <br/>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+
+          <section class="mb-4">
+            <center><h2>Contact us</h2></center> <br/>
+
+            <div class="row">
+              <div class="col-md-12 mb-md-0 mb-6">
+                <form id="contact-form" novalidate>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Your name</label>
+                      <input class="form-control" name="FNAME" type="text" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Your email</label>
+                      <input class="form-control" name="EMAIL" type="email" required>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Your Number</label>
+                      <input class="form-control" name="PHONE" type="text">
+                    </div>
+                    <div class="col-md-6">
+                      <label>Subject</label>
+                      <input class="form-control" name="LNAME" type="text">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label>Your message</label>
+                      <textarea class="form-control" name="MMERGE5" rows="2"></textarea>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="text-center">
+                    <input type="submit" value="Submit" 
+                      style="background: #f65155; border: 0; padding: 10px 24px; color: #fff; border-radius: 25px;">
+                  </div>
+                </form>
+
+                <div id="form-message" class="text-center" style="margin-top:15px; display:none;"></div>
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- jQuery (needed for AJAX) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$('#contact-form').on('submit', function(e){
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+    var mcURL = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+
+    $.ajax({
+        url: mcURL,
+        data: formData,
+        dataType: 'jsonp',
+        success: function(resp){
+            var msgBox = $('#form-message');
+            if(resp.result === "success"){
+                msgBox.text("✅ Thank you! Your message has been submitted successfully.");
+                msgBox.css("color", "green").fadeIn();
+                $('#contact-form')[0].reset();
+            } else {
+                msgBox.text("❌ " + resp.msg.replace(/<[^>]+>/g, ''));
+                msgBox.css("color", "red").fadeIn();
+            }
+        },
+        error: function(){
+            $('#form-message').text("❌ Connection error. Please try again.")
+                               .css("color", "red").fadeIn();
+        }
+    });
+});
+</script>
+
 								<!-- ======= Footer ======= -->
 								<!-- End Footer -->
 								<footer id="footer">
@@ -373,13 +470,127 @@
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Any queries? Please let us know We will be glad to assist, Looking forward to hear from you!</p>
-            <form action method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+         <style>
+  .footer-newsletter {
+    max-width: 400px;
+  }
+  .footer-newsletter h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-newsletter p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    min-width: 200px;
+  }
+  .newsletter-form input[type="submit"] {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .newsletter-form input[type="submit"]:hover {
+    background: #cf3f2f;
+  }
+  .newsletter-message {
+    width: 100%;
+    font-size: 13px;
+    margin-top: 6px;
+    display: none;
+  }
+  .newsletter-message.success {
+    color: #4caf50;
+  }
+  .newsletter-message.error {
+    color: #ff5252;
+  }
+  @media (max-width: 600px) {
+    .newsletter-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .newsletter-form input[type="email"],
+    .newsletter-form input[type="submit"] {
+      width: 100%;
+    }
+  }
+</style>
 
+<div class="col-lg-4 col-md-6 footer-newsletter">
+  <h4>Our Newsletter</h4>
+  <p>Any queries? Please let us know. We will be glad to assist. Looking forward to hear from you!</p>
+
+  <form id="newsletter-form" class="newsletter-form" novalidate>
+    <input type="email" name="EMAIL" placeholder="Enter your email" required>
+    <input type="submit" value="Subscribe">
+    <div id="newsletter-message" class="newsletter-message"></div>
+  </form>
+</div>
+
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  let email = this.EMAIL.value.trim();
+  let messageBox = document.getElementById('newsletter-message');
+
+  if (!email) {
+    messageBox.textContent = "Please enter a valid email address.";
+    messageBox.className = "newsletter-message error";
+    messageBox.style.display = "block";
+    return;
+  }
+
+  let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
+
+  // JSONP request to Mailchimp
+  $.ajax({
+    url: url,
+    data: { EMAIL: email },
+    dataType: 'jsonp',
+    success: function(data) {
+      if (data.result === "success") {
+        messageBox.textContent = "Thank you for subscribing!";
+        messageBox.className = "newsletter-message success";
+        messageBox.style.display = "block";
+        document.getElementById('newsletter-form').reset();
+      } else {
+        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+        messageBox.className = "newsletter-message error";
+        messageBox.style.display = "block";
+      }
+    },
+    error: function() {
+      messageBox.textContent = "Unable to connect. Please try again.";
+      messageBox.className = "newsletter-message error";
+      messageBox.style.display = "block";
+    }
+  });
+});
+</script>
           </div>
 
         </div>
