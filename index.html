@@ -470,7 +470,7 @@ $('#contact-form').on('submit', function(e){
             </ul>
           </div>
 
-         <style>
+     <style>
   .footer-newsletter {
     max-width: 400px;
   }
@@ -500,7 +500,8 @@ $('#contact-form').on('submit', function(e){
     font-size: 14px;
     background: #fff;
     color: #000;
-    min-width: 200px;
+    min-width: 0; /* ensures proper shrink on mobile */
+    box-sizing: border-box;
   }
   .newsletter-form input[type="submit"] {
     background: #e74c3c;
@@ -557,7 +558,7 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
   let email = this.EMAIL.value.trim();
   let messageBox = document.getElementById('newsletter-message');
 
-  if (!email) {
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
     messageBox.textContent = "Please enter a valid email address.";
     messageBox.className = "newsletter-message error";
     messageBox.style.display = "block";
@@ -566,31 +567,32 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
 
   let url = "https://gmail.us22.list-manage.com/subscribe/post-json?u=4e63b2b96f1049b519cb7368a&id=6eee43fbe4&c=?";
 
-  // JSONP request to Mailchimp
   $.ajax({
     url: url,
     data: { EMAIL: email },
     dataType: 'jsonp',
     success: function(data) {
       if (data.result === "success") {
-        messageBox.textContent = "Thank you for subscribing!";
+        messageBox.textContent = "✅ Thank you for subscribing!";
         messageBox.className = "newsletter-message success";
         messageBox.style.display = "block";
-        document.getElementById('newsletter-form').reset();
+        $('#newsletter-form')[0].reset();
+        setTimeout(() => messageBox.style.display = "none", 4000);
       } else {
-        messageBox.textContent = data.msg || "Something went wrong. Please try again.";
+        messageBox.textContent = data.msg.replace(/<[^>]+>/g, '') || "Something went wrong. Please try again.";
         messageBox.className = "newsletter-message error";
         messageBox.style.display = "block";
       }
     },
     error: function() {
-      messageBox.textContent = "Unable to connect. Please try again.";
+      messageBox.textContent = "❌ Unable to connect. Please try again.";
       messageBox.className = "newsletter-message error";
       messageBox.style.display = "block";
     }
   });
 });
 </script>
+
           </div>
 
         </div>
